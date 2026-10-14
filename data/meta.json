@@ -1,0 +1,28 @@
+{
+ "source": "NASA Exoplanet Archive, Planetary Systems table (default parameter set)",
+ "source_url": "https://exoplanetarchive.ipac.caltech.edu/",
+ "query": "select pl_name,hostname,disc_year,discoverymethod,disc_facility,pl_orbper,pl_rade,pl_bmasse,pl_eqt,pl_insol,pl_orbsmax,pl_orbeccen,st_spectype,st_teff,st_rad,st_mass,ra,dec,sy_dist,sy_pnum,releasedate from ps where default_flag=1",
+ "fetched": "2026-10-14",
+ "newest_release_date_in_data": "2026-10-08",
+ "planets": 6445,
+ "hosts": 4842,
+ "multi_planet_systems": 1068,
+ "methods": [
+  "Astrometry",
+  "Disk Kinematics",
+  "Eclipse Timing Variations",
+  "Imaging",
+  "Microlensing",
+  "Orbital Brightness Modulation",
+  "Pulsar Timing",
+  "Pulsation Timing Variations",
+  "Radial Velocity",
+  "Transit",
+  "Transit Timing Variations"
+ ],
+ "tess_planets": 1008,
+ "years": [
+  1992,
+  2026
+ ]
+}

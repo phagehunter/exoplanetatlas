@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Exoplanet Atlas · {{N_PLANETS}} worlds beyond the Solar System</title>
+<meta name="description" content="A cinematic atlas of every confirmed exoplanet in the NASA Exoplanet Archive ({{N_PLANETS}} planets around {{N_HOSTS}} stars as of {{DATA_DATE}}): a scrolling sky map of three decades of discovery, an animated to-scale browser for every planetary system, a TESS spotlight, mass–radius and insolation diagrams, and a searchable table.">
+<meta name="author" content="Curtis Hoffmann">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#000b18">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://curtishoffmann.com/exoplanetatlas/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Curtis Hoffmann">
+<meta property="og:title" content="Exoplanet Atlas — {{N_PLANETS}} worlds, one sky">
+<meta property="og:description" content="Every confirmed exoplanet in the NASA Exoplanet Archive, as a scrolling sky map, an animated system browser, a TESS spotlight and a searchable database.">
+<meta property="og:url" content="https://curtishoffmann.com/exoplanetatlas/">
+<meta property="og:image" content="https://curtishoffmann.com/exoplanetatlas/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Exoplanet Atlas: a sky map of {{N_PLANETS}} exoplanets colored by detection method">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Exoplanet Atlas — {{N_PLANETS}} worlds, one sky">
+<meta name="twitter:description" content="Every confirmed exoplanet in the NASA Exoplanet Archive: sky map, system browser, TESS spotlight, searchable database.">
+<meta name="twitter:image" content="https://curtishoffmann.com/exoplanetatlas/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v={{ASSET_VERSION}}">
+<script type="application/ld+json">
+{{JSON_LD}}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<nav class="nav" id="nav" aria-label="Page sections">
+  <div class="nav-inner">
+    <a class="nav-title" href="https://curtishoffmann.com/exoplanetatlas/"><span class="mark" aria-hidden="true"></span><span>Exoplanet Atlas</span></a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open section menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="nav-links">
+      <a class="nav-link" href="#timeline" data-target="timeline">Timeline</a>
+      <a class="nav-link" href="#systems" data-target="systems">Systems</a>
+      <a class="nav-link" href="#tess" data-target="tess">TESS</a>
+      <a class="nav-link" href="#database" data-target="database">Database</a>
+      <a class="nav-link" href="#sources" data-target="sources">Sources</a>
+    </div>
+    <a class="nav-home" href="https://curtishoffmann.com/" title="Curtis Hoffmann — home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8v9a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2v-9z"/></svg>
+      <span class="lbl">Home</span>
+    </a>
+  </div>
+</nav>
+
+<main id="main">
+<header class="hero wrap">
+  <div class="eyebrow">NASA Exoplanet Archive · data as of {{DATA_DATE}}</div>
+  <h1>Six thousand worlds.<br><em>One sky.</em></h1>
+  <p class="lead">A cinematic atlas of every confirmed exoplanet cataloged by NASA, from <strong>51 Pegasi b</strong> in 1995 to the latest TESS detections. Scroll through three decades of discovery, step inside any of {{N_HOSTS}} planetary systems, and search the full archive.</p>
+  <div class="stats" role="list">
+    <div class="stat" role="listitem"><div class="num">{{N_PLANETS}}</div><div class="lbl">confirmed planets</div></div>
+    <div class="stat" role="listitem"><div class="num">{{N_HOSTS}}</div><div class="lbl">host stars</div></div>
+    <div class="stat" role="listitem"><div class="num">{{N_MULTI}}</div><div class="lbl">multi-planet systems</div></div>
+    <div class="stat" role="listitem"><div class="num">{{YEAR_MIN}}–{{YEAR_MAX}}</div><div class="lbl">years of discovery</div></div>
+  </div>
+  <div class="hero-cta">
+    <a class="btn primary" href="#timeline">Start with the timeline</a>
+    <a class="btn" href="#database">Search the database</a>
+  </div>
+</header>
+
+<!-- 01 Timeline -->
+<section id="timeline" class="block wrap">
+  <div class="section-label"><span class="num">01</span><span>Three decades of discovery</span><span class="rule"></span></div>
+  <h2>A <em>three-decade</em> burst of discovery.</h2>
+  <p class="deck">Until 1995 no planet beyond the Solar System had been confirmed around a Sun-like star. Today there are {{N_PLANETS}}. Each dot is one world, placed where it sits in Earth’s sky and colored by how it was found. Scroll, and each era’s harvest lights up.</p>
+  <div class="scrolly needs-data">
+    <div class="steps" id="steps">
+{{STEPS}}
+    </div>
+    <div class="sticky">
+      <div class="card sky-card">
+        <div class="readout"><div class="yr-now" id="yr-now">1994</div><div class="ct"><b><span id="ct-now">0</span> worlds</b><span id="ct-new">0</span> new in this era</div></div>
+        <canvas id="sky" width="800" height="420" role="img" aria-label="Sky map of confirmed exoplanets by right ascension and declination, colored by detection method, accumulating by year"></canvas>
+        <div class="legend" id="legend" aria-label="Detection method colors"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 Systems -->
+<section id="systems" class="block wrap">
+  <div class="section-label"><span class="num">02</span><span>Step inside a system</span><span class="rule"></span></div>
+  <h2>Step inside a <em>system</em>.</h2>
+  <p class="deck">Every host star in the archive, multi-planet systems first. Choose one to see its star and planets drawn to scale, with orbits animated at their true relative periods (the innermost orbit takes 45 seconds). Every system has its own link.</p>
+  <div class="systems needs-data">
+    <div class="card sys-list">
+      <div class="sys-search"><label for="sys-search">Search {{N_HOSTS}} host stars</label><input id="sys-search" type="search" placeholder="TRAPPIST-1, Kepler-90, HD 10180…" autocomplete="off"></div>
+      <div class="sys-items" id="sys-items" role="listbox" aria-label="Host stars"></div>
+    </div>
+    <div class="card sys-stage" id="sys-stage">
+      <div class="sys-info" id="sys-info"></div>
+      <svg id="sys-svg" role="img" aria-label="Diagram of the selected planetary system with orbits to scale"></svg>
+      <div class="sys-key"><span><span class="sw" style="background:#88e0d0"></span>rocky (&lt;1.6 R⊕)</span><span><span class="sw" style="background:#6cf2ff"></span>sub-Neptune</span><span><span class="sw" style="background:#a0a4ff"></span>Neptune-like</span><span><span class="sw" style="background:#ffd58a"></span>giant (&gt;8 R⊕)</span></div>
+      <div class="sys-actions"><button class="btn small" type="button" id="sys-copy">Copy link to this system</button></div>
+      <div class="sys-table" id="sys-table"></div>
+    </div>
+  </div>
+  <h3 class="eyebrow" style="margin:28px 0 10px">Notable systems</h3>
+  <div class="index">
+{{SYSTEMS_INDEX}}
+  </div>
+</section>
+
+<!-- 03 TESS -->
+<section id="tess" class="block wrap">
+  <div class="section-label"><span class="num">03</span><span>TESS</span><span class="rule"></span></div>
+  <h2>Eight years of <em>TESS</em>.</h2>
+  <p class="deck">Launched in April 2018, the Transiting Exoplanet Survey Satellite scans nearly the whole sky for nearby, bright stars whose planets can be studied with JWST and ground-based spectroscopy. <strong class="cyan">{{N_TESS}} confirmed planets</strong> so far.</p>
+  <div class="tess-stats">
+    <div class="card tess-stat"><div class="v">{{N_TESS}}</div><div class="l">Confirmed planets</div><div class="sub">{{TESS_TRANSIT}} by transit, {{TESS_TTV}} by transit timing.</div></div>
+    <div class="card tess-stat"><div class="v">{{TESS_NEAR}}</div><div class="l">Within 50 parsecs</div><div class="sub">Bright nearby hosts, the prime pool for atmospheric follow-up.</div></div>
+    <div class="card tess-stat"><div class="v">{{TESS_SMALL}}</div><div class="l">Smaller than 1.6 R⊕</div><div class="sub">The regime where planets are likely rocky.</div></div>
+    <div class="card tess-stat"><div class="v">{{TESS_COOL}}</div><div class="l">Around K and M dwarfs</div><div class="sub">Cool stars whose habitable zones lie close in (host below 5,000 K).</div></div>
+  </div>
+  <div class="tess-grid needs-data">
+    <div class="card panel"><h3>All-sky footprint</h3><p class="sub">Every TESS planet in equatorial coordinates; dot size follows planet radius. Hover or tap for details.</p>
+      <div class="chart-scroll"><svg id="tess-sky" class="chart" viewBox="0 0 880 360" role="img" aria-label="Sky positions of TESS planets"></svg></div></div>
+    <div class="card panel"><h3>Cumulative growth</h3><p class="sub">Confirmed TESS planets per year (bars) and the running total (line).</p>
+      <div class="chart-scroll"><svg id="tess-growth" class="chart" viewBox="0 0 540 320" role="img" aria-label="TESS planets confirmed per year and cumulative total"></svg></div></div>
+  </div>
+  <div class="features" id="tess-features"></div>
+</section>
+
+<!-- 04 Database -->
+<section id="database" class="block wrap">
+  <div class="section-label"><span class="num">04</span><span>The full archive</span><span class="rule"></span></div>
+  <h2>The <em>full archive</em>, two ways.</h2>
+  <p class="deck">Two classic diagrams first: mass against radius (where rocky, water-rich and gaseous worlds separate) and stellar flux against radius, with the habitable band shaded. Then every planet in a table to filter, sort and inspect. Hover or tap any dot for the planet behind it.</p>
+  <div class="charts needs-data">
+    <div class="card panel"><h3>Mass — radius</h3><p class="sub">Log scales; Earth, Neptune and Jupiter marked.</p><div class="chart-scroll"><svg id="mr" class="chart" viewBox="0 0 600 380" role="img" aria-label="Planet mass against planet radius for every planet with both measured"></svg></div></div>
+    <div class="card panel"><h3>Insolation — radius</h3><p class="sub">Stellar flux relative to Earth; habitable band from 0.32 to 1.55 Earth flux.</p><div class="chart-scroll"><svg id="ir" class="chart" viewBox="0 0 600 380" role="img" aria-label="Stellar flux received against planet radius"></svg></div></div>
+  </div>
+  <div class="filters">
+    <div><label for="db-search">Planet or host name</label><input id="db-search" type="search" placeholder="Kepler-186, TOI-700, Proxima…" autocomplete="off"></div>
+    <div><label for="db-method">Detection method</label><select id="db-method"><option value="ALL">All methods</option></select></div>
+    <div><label for="db-year">Discovery year</label><select id="db-year"><option value="ALL">All years</option></select></div>
+    <div><span class="pill" id="db-count" aria-live="polite">{{N_PLANETS}} planets</span></div>
+  </div>
+  <div class="card table-scroll needs-data">
+    <table class="db" id="db-table">
+      <caption class="sr-only">Confirmed exoplanets; sortable by column</caption>
+      <thead><tr>
+        <th scope="col" data-k="n"><button type="button">Planet</button></th>
+        <th scope="col" data-k="h"><button type="button">Host</button></th>
+        <th scope="col" data-k="y"><button type="button">Year</button></th>
+        <th scope="col" data-k="m"><button type="button">Method</button></th>
+        <th scope="col" data-k="p"><button type="button">Period (d)</button></th>
+        <th scope="col" data-k="r"><button type="button">Radius (R⊕)</button></th>
+        <th scope="col" data-k="bm"><button type="button">Mass (M⊕)</button></th>
+        <th scope="col" data-k="t"><button type="button">T<sub>eq</sub> (K)</button></th>
+        <th scope="col" data-k="d"><button type="button">Distance (pc)</button></th>
+      </tr></thead>
+      <tbody id="db-body"></tbody>
+    </table>
+  </div>
+  <div class="pager"><button class="btn small" type="button" id="pg-prev">← Previous</button><span id="pg-info">Page 1</span><button class="btn small" type="button" id="pg-next">Next →</button></div>
+  <p class="note">Values are the archive’s default parameter set for each planet. Masses marked as “best mass” may be minimum masses (M sin i) for radial-velocity planets. The underlying file is <a href="data/planets.json">data/planets.json</a>.</p>
+</section>
+
+<!-- 05 Sources -->
+<section id="sources" class="block wrap">
+  <div class="section-label"><span class="num">05</span><span>Sources and method</span><span class="rule"></span></div>
+  <h2>Where the <em>data</em> comes from.</h2>
+  <p class="deck">Everything on this page is drawn from one query to the <a href="https://exoplanetarchive.ipac.caltech.edu/" rel="noopener">NASA Exoplanet Archive</a> (Caltech/IPAC, operated for NASA under the Exoplanet Exploration Program). The query, the fetch date and the counts are recorded in <a href="data/meta.json">data/meta.json</a>, and the page’s captions are computed from the data at build time rather than typed.</p>
+  <div class="method">
+    <div class="card"><h3>The query</h3><p>Planetary Systems table, default parameter set only, so each planet appears once with the archive’s preferred values:</p><p><code>{{QUERY}}</code></p><p>Fetched {{FETCHED}}; the newest release date among the rows is {{DATA_DATE}}. Re-running <code>fetch_data.py</code> refreshes the atlas.</p></div>
+    <div class="card"><h3>Reading the page</h3><p>The sky map uses equatorial coordinates (right ascension 0–360°, declination −90° to +90°). The system browser spaces orbits on a log scale of semi-major axis (estimated from period and stellar mass where the axis is not published) and compresses extreme period ratios so slow outer planets still move.</p><p>Planet classes in the system browser follow radius: below 1.6 R⊕ rocky, 1.6–4 sub-Neptune, 4–8 Neptune-like, above 8 giant. The habitable band on the insolation chart spans 0.32 to 1.55 times Earth’s flux, a common optimistic range.</p></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <div><em>Exoplanet Atlas</em> is made by <a href="https://curtishoffmann.com/">Curtis Hoffmann</a>. Data: NASA Exoplanet Archive. Code MIT-licensed. <a href="https://github.com/phagehunter/exoplanetatlas">Source on GitHub</a>.</div>
+    <div>Data as of {{DATA_DATE}} · {{N_PLANETS}} worlds · built with D3</div>
+  </div>
+</footer>
+
+<div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+<script type="application/json" id="meta-data">{{META_JSON}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha512-vc58qvvBdrDR4etbxMdlTt4GBQk1qjvyORR2nrsPsFPyrs+/u5c3+1Ct6upOgdZoIl7eq6k3a1UPDSNAQi/32A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="assets/app.js?v={{ASSET_VERSION}}"></script>
+</body>
+</html>
