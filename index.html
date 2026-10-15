@@ -306,10 +306,33 @@
 <!-- 05 Sources -->
 <section id="sources" class="block wrap">
   <div class="section-label"><span class="num">05</span><span>Sources and method</span><span class="rule"></span></div>
-  <h2>Where the <em>data</em> comes from.</h2>
+  <h2>Where the <em>data</em> come from.</h2>
   <p class="deck">Everything on this page is drawn from one query to the <a href="https://exoplanetarchive.ipac.caltech.edu/" rel="noopener">NASA Exoplanet Archive</a> (Caltech/IPAC, operated for NASA under the Exoplanet Exploration Program). The query, the fetch date and the counts are recorded in <a href="data/meta.json">data/meta.json</a>, and the page’s captions are computed from the data at build time rather than typed.</p>
   <div class="method">
-    <div class="card"><h3>The query</h3><p>Planetary Systems table, default parameter set only, so each planet appears once with the archive’s preferred values:</p><p><code>select pl_name,hostname,disc_year,discoverymethod,disc_facility,pl_orbper,pl_rade,pl_bmasse,pl_eqt,pl_insol,pl_orbsmax,pl_orbeccen,st_spectype,st_teff,st_rad,st_mass,ra,dec,sy_dist,sy_pnum,releasedate from ps where default_flag=1</code></p><p>Fetched 14 October 2026; the newest release date among the rows is 8 October 2026. Re-running <code>fetch_data.py</code> refreshes the atlas.</p></div>
+    <div class="card"><h3>The query</h3><p>Planetary Systems table, default parameter set only, so each planet appears once with the archive’s preferred values. Fetched 14 October 2026; the newest release date among the rows is 8 October 2026. Re-running <code>fetch_data.py</code> refreshes the atlas.</p><details class="query"><summary>Show the query</summary><pre><code>select
+  pl_name,
+  hostname,
+  disc_year,
+  discoverymethod,
+  disc_facility,
+  pl_orbper,
+  pl_rade,
+  pl_bmasse,
+  pl_eqt,
+  pl_insol,
+  pl_orbsmax,
+  pl_orbeccen,
+  st_spectype,
+  st_teff,
+  st_rad,
+  st_mass,
+  ra,
+  dec,
+  sy_dist,
+  sy_pnum,
+  releasedate
+from ps
+where default_flag=1</code></pre></details></div>
     <div class="card"><h3>Reading the page</h3><p>The sky map uses equatorial coordinates (right ascension 0–360°, declination −90° to +90°). The system browser spaces orbits on a log scale of semi-major axis (estimated from period and stellar mass where the axis is not published) and compresses extreme period ratios so slow outer planets still move.</p><p>Planet classes in the system browser follow radius: below 1.6 R⊕ rocky, 1.6–4 sub-Neptune, 4–8 Neptune-like, above 8 giant. The habitable band on the insolation chart spans 0.32 to 1.55 times Earth’s flux, a common optimistic range.</p></div>
   </div>
 </section>

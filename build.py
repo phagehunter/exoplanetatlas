@@ -119,6 +119,7 @@ def main():
         "{{N_PLANETS}}": n(META["planets"]), "{{N_HOSTS}}": n(META["hosts"]), "{{N_MULTI}}": n(META["multi_planet_systems"]),
         "{{YEAR_MIN}}": str(META["years"][0]), "{{YEAR_MAX}}": str(META["years"][1]),
         "{{DATA_DATE}}": date, "{{FETCHED}}": fetched, "{{QUERY}}": html.escape(META["query"]),
+        "{{QUERY_PRETTY}}": html.escape(META["query"].replace("select ", "select\n  ").replace(",", ",\n  ").replace(" from ", "\nfrom ").replace(" where ", "\nwhere ")),
         "{{ASSET_VERSION}}": META["fetched"].replace("-", ""),
         "{{STEPS}}": steps_html(), "{{SYSTEMS_INDEX}}": systems_index(), "{{JSON_LD}}": json_ld(),
         "{{META_JSON}}": json.dumps(META, separators=(",", ":")).replace("</", "<\\/"),

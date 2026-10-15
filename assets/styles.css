@@ -248,10 +248,15 @@ table.db td .m { display: inline-block; width: 8px; height: 8px; border-radius: 
 /* ───────── Sources ───────── */
 .method { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 8px; }
 @media (min-width: 760px) { .method { grid-template-columns: 1fr 1fr; } }
-.method .card { padding: 20px; }
+.method .card { padding: 20px; min-width: 0; }
+.method > * { min-width: 0; }
+.method .query { margin-top: 10px; }
+.method .query summary { cursor: pointer; font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.method pre { margin: 10px 0 0; padding: 12px 14px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; overflow-x: auto; max-width: 100%; }
+.method pre code { font-family: var(--mono); font-size: 12px; color: var(--cyan); white-space: pre; }
 .method h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; margin: 0 0 8px; }
 .method p { font-size: 14px; color: var(--ink-dim); margin: 0 0 8px; }
-.method code { font-family: var(--mono); font-size: 12px; color: var(--cyan); }
+.method code { font-family: var(--mono); font-size: 12px; color: var(--cyan); overflow-wrap: anywhere; }
 
 /* ───────── Tooltip ───────── */
 .tooltip { position: fixed; z-index: 120; pointer-events: none; background: #0f1f38; border: 1px solid var(--line-2); border-radius: 5px; padding: 10px 12px; font-size: 13px; color: var(--ink); max-width: 260px; box-shadow: 0 10px 30px rgba(0,0,0,.5); opacity: 0; transition: opacity .12s; }
