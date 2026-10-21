@@ -1,0 +1,28 @@
+# Exoplanet Atlas
+
+> An interactive atlas of every confirmed exoplanet in the NASA Exoplanet Archive, by Curtis Hoffmann: 6,445 planets around 4,842 stars as of 8 October 2026, shown as a scrolling sky map of three decades of discovery, a to-scale browser for every planetary system, a TESS spotlight, mass-radius and insolation diagrams, and a searchable table.
+
+Site: https://curtishoffmann.com/exoplanetatlas/
+Source and data (MIT code; planet data from the NASA Exoplanet Archive): https://github.com/phagehunter/exoplanetatlas
+
+## Main sections (one page, anchored)
+
+- Timeline, a sky map of every planet lighting up era by era from 1992: https://curtishoffmann.com/exoplanetatlas/#timeline
+- System browser, any host star with its planets drawn to scale and orbits animated at their true relative periods; each system has a permanent link, for example https://curtishoffmann.com/exoplanetatlas/#system/TRAPPIST-1 : https://curtishoffmann.com/exoplanetatlas/#systems
+- TESS spotlight, the Transiting Exoplanet Survey Satellite's footprint, per-year growth and six notable systems: https://curtishoffmann.com/exoplanetatlas/#tess
+- Database, mass-radius and insolation-radius diagrams plus a sortable, filterable table of every planet: https://curtishoffmann.com/exoplanetatlas/#database
+- Where the data come from: https://curtishoffmann.com/exoplanetatlas/#sources
+
+## Data
+
+- Source: NASA Exoplanet Archive, Planetary Systems table, default parameter set (`default_flag = 1`), so each planet appears once with the archive's preferred parameters. Operated by Caltech under contract with NASA; credit the archive when reusing the data.
+- Snapshot: fetched 14 October 2026; newest release date in the data 8 October 2026. 6,445 planets, 4,842 host stars, 1,068 multi-planet systems, 1,008 TESS planets, 11 detection methods, discovery years 1992 to 2026.
+- Files: `data/planets.json` (one compact record per planet) and `data/meta.json` (the exact query, dates and counts) in the repository. `fetch_data.py` refreshes the snapshot; `build.py` regenerates the page.
+- Fields per planet: name, host, discovery year, method and facility, orbital period, radius, mass, equilibrium temperature, insolation, semi-major axis, eccentricity, stellar type, temperature, radius and mass, sky position, distance, number of planets in the system, release date.
+
+## License and contact
+
+- Code: MIT License. Planet data belongs to the NASA Exoplanet Archive and is redistributed unchanged apart from column selection and rounding.
+- Author: Curtis Hoffmann, https://curtishoffmann.com/
+- Contact and issues: https://github.com/phagehunter/exoplanetatlas/issues
+- Sitemap: https://curtishoffmann.com/exoplanetatlas/sitemap.xml
