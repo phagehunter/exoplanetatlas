@@ -112,6 +112,17 @@ def json_ld():
     }, indent=1, ensure_ascii=False)
 
 
+def asset_version():
+    """Short hash of the stylesheet and script, so a change to either busts browser caches."""
+    import hashlib
+    h = hashlib.sha256()
+    for f in ("styles.css", "app.js"):
+        fp = ROOT / "assets" / f
+        if fp.exists():
+            h.update(fp.read_bytes())
+    return h.hexdigest()[:10]
+
+
 def main():
     date = datetime.date.fromisoformat(META["newest_release_date_in_data"]).strftime("%-d %B %Y")
     fetched = datetime.date.fromisoformat(META["fetched"]).strftime("%-d %B %Y")
@@ -119,7 +130,7 @@ def main():
         "{{N_PLANETS}}": n(META["planets"]), "{{N_HOSTS}}": n(META["hosts"]), "{{N_MULTI}}": n(META["multi_planet_systems"]),
         "{{YEAR_MIN}}": str(META["years"][0]), "{{YEAR_MAX}}": str(META["years"][1]),
         "{{DATA_DATE}}": date, "{{FETCHED}}": fetched, "{{QUERY}}": html.escape(META["query"]),
-        "{{ASSET_VERSION}}": META["fetched"].replace("-", ""),
+        "{{ASSET_VERSION}}": asset_version(),
         "{{STEPS}}": steps_html(), "{{SYSTEMS_INDEX}}": systems_index(), "{{JSON_LD}}": json_ld(),
         "{{META_JSON}}": json.dumps(META, separators=(",", ":")).replace("</", "<\\/"),
     }
