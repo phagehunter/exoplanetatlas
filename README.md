@@ -1,6 +1,6 @@
 # Exoplanet Atlas
 
-Six thousand worlds, one sky. An interactive atlas of every confirmed exoplanet in the NASA Exoplanet Archive.
+An interactive atlas of every confirmed exoplanet in the NASA Exoplanet Archive, built from a single query to the archive and rebuilt whenever the data are refreshed.
 
 Live at **https://curtishoffmann.com/exoplanetatlas/**
 

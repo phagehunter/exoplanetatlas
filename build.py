@@ -21,19 +21,19 @@ TEMPLATE = (ROOT / "src" / "template.html").read_text(encoding="utf-8")
 # Timeline eras: (from, to, label, title, prose). Counts are computed below.
 STEPS = [
     (1992, 1994, "Precursor era", "Before the floodgates",
-     "Pulsar planets came first. In 1992 Wolszczan and Frail reported two worlds orbiting the millisecond pulsar PSR B1257+12, with a third following in 1994. They were strange and unsettling, and barely felt real. Around normal stars: silence."),
+     "Pulsar planets came first. In 1992 Wolszczan and Frail reported two worlds orbiting the millisecond pulsar PSR B1257+12, and a third followed in 1994. No planet had yet been confirmed around an ordinary star."),
     (1995, 1999, "Radial-velocity dawn", "51 Pegasi b",
-     "Mayor and Queloz announce a Jupiter-mass world hugging a Sun-like star in a four-day orbit. The first true exoplanet. Radial velocity becomes the dominant detection method and a trickle of hot Jupiters follows."),
+     "Mayor and Queloz announce a Jupiter-mass planet in a four-day orbit around 51 Pegasi, the first planet found around a Sun-like star. Radial velocity becomes the dominant detection method, and a trickle of hot Jupiters follows."),
     (2000, 2008, "Transit era opens", "Transits arrive",
      "HD 209458 b is the first planet caught crossing its star’s face. Ground-based surveys (HAT, WASP, KELT) start grinding out hot Jupiters while the radial-velocity catalog quietly grows."),
     (2009, 2013, "Kepler prime", "Kepler",
-     "NASA’s Kepler mission stares at a single field for four years and changes everything: Earth-sized planets, multi-planet systems, statistics. Most of its harvest is confirmed in bulk a few years later."),
+     "NASA’s Kepler mission watches a single field for four years and finds Earth-sized planets and multi-planet systems in numbers large enough for population statistics. Most of its planets are confirmed in bulk a few years later."),
     (2014, 2017, "Validation and K2", "The Kepler flood",
      "Statistical validation releases hundreds of Kepler planets at once in 2014 and again in 2016. After its reaction-wheel failure Kepler is reborn as K2, surveying the ecliptic, while microlensing (KMTNet, OGLE) reaches into the galactic bulge."),
     (2018, 2021, "TESS all-sky", "TESS goes live",
      "The Transiting Exoplanet Survey Satellite scans nearly the entire sky for nearby, bright stars whose planets can actually be studied. Catalog growth accelerates again."),
     (2022, 2100, "Current frontier", "JWST and the present",
-     "The James Webb Space Telescope starts probing atmospheres. Direct imaging matures. Ground-based radial velocity joins TESS for follow-up, and the archive keeps growing."),
+     "The James Webb Space Telescope begins measuring exoplanet atmospheres, ground-based radial-velocity surveys follow up TESS candidates, and the archive keeps growing."),
 ]
 
 
